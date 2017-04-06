@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PDFTrainingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PDFTraining.dbo.Arkusz1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Arkusz1">
+          <Key>
+            <PropertyRef Name="Identyfikator" />
+          </Key>
+          <Property Name="Identyfikator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pole2" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PDFTraining.dbo.słownik' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="słownik">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EN" Type="nvarchar" MaxLength="255" />
+          <Property Name="PL" Type="nvarchar" MaxLength="255" />
+          <Property Name="EN_opis" Type="nvarchar" MaxLength="255" />
+          <Property Name="PL_opis" Type="nvarchar" MaxLength="255" />
+          <Property Name="ugr_tematyczne" Type="int" />
+          <Property Name="ilustracje" Type="ntext" />
+          <Property Name="komentarz" Type="ntext" />
+          <Property Name="EN_acr" Type="nvarchar" MaxLength="255" />
+          <Property Name="PL_acr" Type="nvarchar" MaxLength="255" />
+          <Property Name="część mowy" Type="int" />
+          <Property Name="skojarzenie" Type="ntext" />
+          <Property Name="data_wprowadzenia" Type="datetime" />
+          <Property Name="oficjalne" Type="bit" />
+        </EntityType>
+        <EntityType Name="SOFRep">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="word" Type="nvarchar" MaxLength="50" />
+          <Property Name="lenght" Type="int" />
+        </EntityType>
+        <EntityType Name="SpecialOperations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="word" Type="nvarchar" MaxLength="50" />
+          <Property Name="lenght" Type="int" />
+        </EntityType>
+        <EntityType Name="t1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="word" Type="nvarchar" MaxLength="50" />
+          <Property Name="lenght" Type="int" />
+        </EntityType>
+        <EntityType Name="theMostPopularWordsGoogle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="word" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityContainer Name="PDFTrainingModelStoreContainer">
+          <EntitySet Name="SOFRep" EntityType="Self.SOFRep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialOperations" EntityType="Self.SpecialOperations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t1" EntityType="Self.t1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="theMostPopularWordsGoogle" EntityType="Self.theMostPopularWordsGoogle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arkusz1" EntityType="Self.Arkusz1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Arkusz1].[Identyfikator] AS [Identyfikator], 
+    [Arkusz1].[Pole2] AS [Pole2]
+    FROM [dbo].[Arkusz1] AS [Arkusz1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="słownik" EntityType="Self.słownik" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [słownik].[ID] AS [ID], 
+    [słownik].[EN] AS [EN], 
+    [słownik].[PL] AS [PL], 
+    [słownik].[EN_opis] AS [EN_opis], 
+    [słownik].[PL_opis] AS [PL_opis], 
+    [słownik].[ugr_tematyczne] AS [ugr_tematyczne], 
+    [słownik].[ilustracje] AS [ilustracje], 
+    [słownik].[komentarz] AS [komentarz], 
+    [słownik].[EN_acr] AS [EN_acr], 
+    [słownik].[PL_acr] AS [PL_acr], 
+    [słownik].[część mowy] AS [część mowy], 
+    [słownik].[skojarzenie] AS [skojarzenie], 
+    [słownik].[data_wprowadzenia] AS [data_wprowadzenia], 
+    [słownik].[oficjalne] AS [oficjalne]
+    FROM [dbo].[słownik] AS [słownik]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PDFTrainingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="word" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lenght" Type="Int32" />
+        </EntityType>
+        <EntityType Name="theMostPopularWordsGoogle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="word" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Arkusz1">
+          <Key>
+            <PropertyRef Name="Identyfikator" />
+          </Key>
+          <Property Name="Identyfikator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pole2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PDFTrainingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t1" EntityType="Self.t1" />
+          <EntitySet Name="theMostPopularWordsGoogle" EntityType="Self.theMostPopularWordsGoogle" />
+          <EntitySet Name="Arkusz1" EntityType="Self.Arkusz1" />
+          <EntitySet Name="SOFRep" EntityType="PDFTrainingModel.SOFRep" />
+          <EntitySet Name="SpecialOperations" EntityType="PDFTrainingModel.SpecialOperations" />
+          <EntitySet Name="słownik" EntityType="PDFTrainingModel.słownik" />
+        </EntityContainer>
+        <EntityType Name="SOFRep">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="word" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lenght" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SpecialOperations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="word" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lenght" Type="Int32" />
+        </EntityType>
+        <EntityType Name="słownik">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EN_opis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PL_opis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ugr_tematyczne" Type="Int32" />
+          <Property Name="ilustracje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="komentarz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EN_acr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PL_acr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="część_mowy" Type="Int32" />
+          <Property Name="skojarzenie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="data_wprowadzenia" Type="DateTime" Precision="3" />
+          <Property Name="oficjalne" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PDFTrainingModelStoreContainer" CdmEntityContainer="PDFTrainingEntities">
+          <EntitySetMapping Name="t1">
+            <EntityTypeMapping TypeName="PDFTrainingModel.t1">
+              <MappingFragment StoreEntitySet="t1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="word" ColumnName="word" />
+                <ScalarProperty Name="lenght" ColumnName="lenght" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theMostPopularWordsGoogle">
+            <EntityTypeMapping TypeName="PDFTrainingModel.theMostPopularWordsGoogle">
+              <MappingFragment StoreEntitySet="theMostPopularWordsGoogle">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="word" ColumnName="word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arkusz1">
+            <EntityTypeMapping TypeName="PDFTrainingModel.Arkusz1">
+              <MappingFragment StoreEntitySet="Arkusz1">
+                <ScalarProperty Name="Identyfikator" ColumnName="Identyfikator" />
+                <ScalarProperty Name="Pole2" ColumnName="Pole2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOFRep">
+            <EntityTypeMapping TypeName="PDFTrainingModel.SOFRep">
+              <MappingFragment StoreEntitySet="SOFRep">
+                <ScalarProperty Name="lenght" ColumnName="lenght" />
+                <ScalarProperty Name="word" ColumnName="word" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecialOperations">
+            <EntityTypeMapping TypeName="PDFTrainingModel.SpecialOperations">
+              <MappingFragment StoreEntitySet="SpecialOperations">
+                <ScalarProperty Name="lenght" ColumnName="lenght" />
+                <ScalarProperty Name="word" ColumnName="word" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="słownik">
+            <EntityTypeMapping TypeName="PDFTrainingModel.słownik">
+              <MappingFragment StoreEntitySet="słownik">
+                <ScalarProperty Name="oficjalne" ColumnName="oficjalne" />
+                <ScalarProperty Name="data_wprowadzenia" ColumnName="data_wprowadzenia" />
+                <ScalarProperty Name="skojarzenie" ColumnName="skojarzenie" />
+                <ScalarProperty Name="część_mowy" ColumnName="część mowy" />
+                <ScalarProperty Name="PL_acr" ColumnName="PL_acr" />
+                <ScalarProperty Name="EN_acr" ColumnName="EN_acr" />
+                <ScalarProperty Name="komentarz" ColumnName="komentarz" />
+                <ScalarProperty Name="ilustracje" ColumnName="ilustracje" />
+                <ScalarProperty Name="ugr_tematyczne" ColumnName="ugr_tematyczne" />
+                <ScalarProperty Name="PL_opis" ColumnName="PL_opis" />
+                <ScalarProperty Name="EN_opis" ColumnName="EN_opis" />
+                <ScalarProperty Name="PL" ColumnName="PL" />
+                <ScalarProperty Name="EN" ColumnName="EN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
